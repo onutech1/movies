@@ -1,8 +1,8 @@
-import "react";
 import { Grid, GridItem } from "@chakra-ui/react";
+
 import Nav from "./component/Nav";
-import Cardgrid from "./component/Cardgrid";
 import Sidebar from "./component/Sidebar";
+import Cardgrid from "./component/Cardgrid";
 
 function App() {
   return (
@@ -17,37 +17,32 @@ function App() {
           "sidebar main"
         `,
       }}
-      // Use "auto" so the header naturally hugs the height of your Nav component
-      gridTemplateRows={{
-        base: "auto 1fr",
-      }}
-      // Added minmax(0, 1fr) to prevent large content from breaking the grid
-      gridTemplateColumns={{
+      templateRows="auto 1fr"
+      templateColumns={{
         base: "1fr",
-        md: "250px minmax(0, 1fr)",
+        md: "240px minmax(0, 1fr)",
       }}
-      minH="100vh" // minH is safer than h to allow content to scroll naturally
+      minH="100vh"
+      bg="gray.900"
     >
-      {/* Header */}
-      <GridItem area="header" as="header" zIndex="10">
+      {/* HEADER */}
+      <GridItem area="header">
         <Nav />
       </GridItem>
 
-      {/* Sidebar */}
+      {/* SIDEBAR */}
       <GridItem
         area="sidebar"
-        as="aside"
-        bg="bg.muted"
+        display={{ base: "none", md: "block" }}
         borderRight="1px solid"
-        borderColor="border"
-        display={{ base: "none", md: "block" }} // Pure CSS hiding
-        p={4}
+        borderColor="gray.700"
+        overflow="hidden"
       >
         <Sidebar />
       </GridItem>
 
-      {/* Main Content */}
-      <GridItem area="main" as="main" bg="bg.panel" p={6}>
+      {/* MAIN CONTENT */}
+      <GridItem area="main" overflowX="hidden">
         <Cardgrid />
       </GridItem>
     </Grid>
