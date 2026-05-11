@@ -94,19 +94,7 @@ const Cardgrid = () => {
   return (
     <>
       <Box px={{ base: 3, md: 5 }} py={5}>
-        <SimpleGrid
-          columns={{
-            base: 1,
-            sm: 2,
-            md: 2,
-            lg: 3,
-            xl: 4,
-          }}
-          spacingX={8}
-          spacingY={10}
-          px={{ base: 2, md: 4, lg: 6 }}
-          py={6}
-        >
+        <SimpleGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} spacing={12}>
           {games.map((game) => (
             <Card.Root
               key={game.id}
@@ -118,7 +106,7 @@ const Cardgrid = () => {
               border="1px solid"
               borderColor={{ base: "gray.200", _dark: "gray.700" }}
               transition="0.25s ease"
-              h="190px"
+              h="100%"
               _hover={{
                 transform: "translateY(-6px)",
                 boxShadow: "2xl",

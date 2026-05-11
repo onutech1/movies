@@ -1,4 +1,4 @@
-import { HStack, Image, Text, Input, Kbd, IconButton } from "@chakra-ui/react";
+import { HStack, Image, Input, Kbd, IconButton, Box } from "@chakra-ui/react";
 
 import logo from "../assets/react.svg";
 
@@ -13,62 +13,56 @@ const Nav = () => {
   return (
     <HStack
       justify="space-between"
+      gap={4}
       borderBottom="1px solid"
-      borderColor="gray.200"
-      bg="white"
-      color="black"
-      _dark={{
-        borderColor: "gray.700",
-        bg: "gray.900",
-        color: "white",
-      }}
+      borderColor={{ base: "gray.200", _dark: "gray.700" }}
+      bg={{ base: "white", _dark: "gray.900" }}
+      color={{ base: "black", _dark: "white" }}
       position="sticky"
       top="0"
       zIndex="1000"
-      px={4}
+      px={{ base: 3, md: 6 }}
       py={3}
+      backdropFilter="blur(10px)"
     >
-      {/* Logo */}
-      <HStack gap={3}>
-        <Image boxSize="35px" src={logo} alt="Logo" />
+      {/* LOGO */}
+      <Box flexShrink={0}>
+        <Image boxSize={{ base: "32px", md: "38px" }} src={logo} alt="Logo" />
+      </Box>
 
-        <Text fontSize="lg" fontWeight="bold">
-          Movie App
-        </Text>
-      </HStack>
-
-      {/* Search */}
+      {/* SEARCH */}
       <InputGroup
-        maxW="400px"
-        width="100%"
+        flex="1"
+        maxW={{ base: "100%", md: "500px" }}
         startElement={<LuSearch />}
-        endElement={<Kbd>⌘K</Kbd>}
+        endElement={<Kbd display={{ base: "none", md: "flex" }}>⌘K</Kbd>}
       >
         <Input
           pl="40px"
           pr="60px"
-          placeholder="Search movies..."
+          placeholder="Search games..."
           borderRadius="full"
-          bg="gray.100"
-          color="black"
-          _dark={{
-            bg: "gray.800",
-            color: "white",
-            borderColor: "gray.600",
+          bg={{ base: "gray.100", _dark: "gray.800" }}
+          color={{ base: "black", _dark: "white" }}
+          border="1px solid"
+          borderColor={{
+            base: "gray.200",
+            _dark: "gray.700",
+          }}
+          _focus={{
+            borderColor: "blue.400",
+            boxShadow: "0 0 0 1px #3182ce",
           }}
         />
       </InputGroup>
 
-      {/* Theme Toggle */}
+      {/* THEME TOGGLE */}
       <IconButton
         aria-label="Toggle Theme"
         onClick={toggleColorMode}
         borderRadius="full"
         variant="ghost"
-        color="black"
-        _dark={{
-          color: "white",
-        }}
+        size={{ base: "sm", md: "md" }}
       >
         {colorMode === "light" ? <LuMoon /> : <LuSun />}
       </IconButton>
