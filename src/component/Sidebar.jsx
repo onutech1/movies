@@ -41,6 +41,7 @@ const Sidebar = () => {
   return (
     <Box
       w={{ base: "100%", md: "240px" }}
+      minH="100vh"
       bg="white"
       color="black"
       borderRight="1px solid"

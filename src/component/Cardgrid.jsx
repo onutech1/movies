@@ -100,9 +100,11 @@ const Cardgrid = () => {
               key={game.id}
               overflow="hidden"
               borderRadius="2xl"
-              bg="gray.800"
-              color="white"
+              bg={{ base: "gray.100", _dark: "gray.700" }}
+              color={{ base: "gray.700", _dark: "gray.200" }}
               boxShadow="lg"
+              border="1px solid"
+              borderColor={{ base: "gray.200", _dark: "gray.700" }}
               transition="0.25s ease"
               h="100%"
               _hover={{
